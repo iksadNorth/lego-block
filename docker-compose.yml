@@ -1,0 +1,7 @@
+services:
+  npm-repo:
+    image: verdaccio/verdaccio
+    ports:
+      - 4873:4873
+    volumes:
+      - ./verdaccio:/verdaccio
