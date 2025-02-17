@@ -16,6 +16,12 @@ const CommentTitle = styled.div`
     }
 `;
 
+const Box = styled(Bedge)`
+    padding: 10px; margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+`;
+
 interface CommentProps {
     comment?: string;
     src?: string;
@@ -37,12 +43,12 @@ export const Comment: React.FC<CommentProps> = ({comment, src, nickname, created
     };
 
     return (<>
-        <Bedge mode={BedgeMode.Comment} src={src}>
+        <Box mode={BedgeMode.Comment} src={src} { ...props }>
             <CommentTitle>
                 <span style={{ color: 'gray' }}>@{ nickname }</span>
                 <span>{ timeAgo(created_at) }</span>
                 <span className={"col-span-2"}>{ parseComment(comment || '') }</span>
             </CommentTitle>
-        </Bedge>
+        </Box>
     </>)
 };

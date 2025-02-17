@@ -11,10 +11,13 @@ const api = axios.create({
 // 요청 인터셉터
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem("access_token");
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
+        const userInfo = JSON.parse(localStorage.getItem("user_info") || '');
+        if(!userInfo) return config;
+
+        const token = userInfo.accessToken;
+        if (!token) return config;
+        
+        config.headers.Authorization = `Bearer ${token}`;
         return config;
     },
     (error) => Promise.reject(error)

@@ -27,7 +27,7 @@ export const IconContainer = styled.div`
 `;
 
 interface IcontBtnProp {
-    children: ReactNode;
+    children?: ReactNode;
     icon?: IconProp;
     onClick?: React.MouseEventHandler;
 }

@@ -7,11 +7,13 @@ const BedgeStyled = styled.img`
     border-radius: 50%;
     height: 2rem;
     max-width: 100%;
+    flex-grow: 0;
 `;
 const ContentStyled = styled(Ellipsis)`
     font-size: 1rem;
     width: 80%;
     word-break: break-word;
+    flex-grow: 1;
 `;
 const BedgeContainer = styled.div<any>`
     display: flex;
