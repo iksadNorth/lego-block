@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
 import api from "@/api/axio";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 
 import VideoProvider from "@/Proxy/Video";
 import Video from "@/ui/Video";
 import MetaData from "@/ui/MetaData";
 import CommentList from "@/ui/CommentList"
 
+
+const Div = styled.div`
+    max-width: 1000px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > * {
+        width: 100%;
+    }
+`;
 
 const backURL = import.meta.env.VITE_API_BACKEND_URL;
 const Watch = () => {
@@ -34,11 +47,11 @@ const Watch = () => {
 
     return (<>
         <VideoProvider>
-            <div>
+            <Div>
                 <Video srcUrl={`${backURL}/api/v1/videos/${videoId}`}></Video>
                 <MetaData {...data} />
                 <CommentList {...data} />
-            </div>
+            </Div>
         </VideoProvider>
     </>)};
 

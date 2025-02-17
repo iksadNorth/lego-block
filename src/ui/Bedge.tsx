@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
+import Ellipsis from '@/align/Ellipsis';
 
 
 const BedgeStyled = styled.img`
@@ -7,7 +8,7 @@ const BedgeStyled = styled.img`
     height: 2rem;
     max-width: 100%;
 `;
-const ContentStyled = styled.div`
+const ContentStyled = styled(Ellipsis)`
     font-size: 1rem;
     width: 80%;
     word-break: break-word;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { ReactNode } from 'react';
+import Ellipsis from '@/align/Ellipsis';
 
 
 const ButtonStyled = styled.button`${({ theme }) => `
@@ -38,7 +39,7 @@ const IconBtn: React.FC<IcontBtnProp> = ({ children, icon, onClick }) => {
         <ButtonStyled onClick={onClick}>
             <IconContainer>
                 {icon ? <FontAwesomeIcon icon={icon} /> : ''}
-                <span className='text'>{children}</span>
+                <Ellipsis className='text'>{children}</Ellipsis>
             </IconContainer>
         </ButtonStyled>
     </>);
