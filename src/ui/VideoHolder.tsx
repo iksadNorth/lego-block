@@ -25,7 +25,7 @@ const Content = styled.div`
 const VideoHolderStyled = styled.div`
     ${ HoverShadow }
 
-    border: solid 1px black;
+    border: solid 1px lightgray;
     aspect-ratio: calc(5/4);
 
     overflow: hidden;
