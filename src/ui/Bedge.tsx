@@ -9,7 +9,8 @@ const BedgeStyled = styled.img`
     max-width: 100%;
     flex-grow: 0;
 `;
-const ContentStyled = styled(Ellipsis)`
+const ContentStyled = styled.div`
+    ${ Ellipsis }
     font-size: 1rem;
     width: 80%;
     word-break: break-word;

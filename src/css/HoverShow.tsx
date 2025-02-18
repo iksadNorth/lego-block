@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import { css } from "styled-components";
 
 
-const HoverShow = styled.div`
+const HoverShow = css`
     opacity: 0;
     transition: opacity 300ms ease-in-out;
 

@@ -2,6 +2,7 @@ import { useNavigate }  from "react-router-dom";
 import styled from "styled-components";
 import Bedge from "@/ui/Bedge";
 import { convertToKoreanUnit, timeAgo } from "@/utils";
+import HoverShadow from "../css/HoverShadow";
 
 
 const Preview = styled.img`
@@ -22,6 +23,8 @@ const Content = styled.div`
 `;
 
 const VideoHolderStyled = styled.div`
+    ${ HoverShadow }
+
     border: solid 1px black;
     aspect-ratio: calc(5/4);
 

@@ -5,6 +5,7 @@ import React, { ReactNode } from 'react';
 import Ellipsis from '@/align/Ellipsis';
 
 
+const Span = styled.div`${ Ellipsis }`;
 const ButtonStyled = styled.button`${({ theme }) => `
     color: ${theme.colors.text};
 
@@ -39,7 +40,7 @@ const IconBtn: React.FC<IcontBtnProp> = ({ children, icon, onClick }) => {
         <ButtonStyled onClick={onClick}>
             <IconContainer>
                 {icon ? <FontAwesomeIcon icon={icon} /> : ''}
-                <Ellipsis className='text'>{children}</Ellipsis>
+                <Span className='text'>{children}</Span>
             </IconContainer>
         </ButtonStyled>
     </>);

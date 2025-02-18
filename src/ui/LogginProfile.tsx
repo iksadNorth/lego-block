@@ -5,7 +5,7 @@ import { initialValueUserInfo, UserInfoProps } from "@/api/AuthGoogleCallback";
 
 
 interface LogginProfileProps {
-    onClick: React.MouseEventHandler;
+    onClick?: React.MouseEventHandler;
 }
 const LogginProfile: React.FC<LogginProfileProps> = ({ onClick }) => {
     const [ userInfo ] = useLocalStorage<UserInfoProps>('user_info', initialValueUserInfo);

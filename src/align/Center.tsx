@@ -1,15 +1,11 @@
-import styled from "styled-components";
+import { css } from "styled-components";
 
 
-const Body = styled.div`
+const Center = css`
     height: 100%; width: 100%; 
     display: flex;
     justify-content: center;
     align-content: center;
-
-    & > * {
-        height: 100%; width: 100%; 
-    }
 `;
 
-export default Body;
+export default Center;

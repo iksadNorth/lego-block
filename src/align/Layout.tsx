@@ -23,7 +23,7 @@ let LayoutStyle = styled.div`
     }
 `;
 
-const Body = styled(Center)``;
+const Body = styled.div`${ Center }`;
 
 interface LayoutProps {
     children: ReactNode;

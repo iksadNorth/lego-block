@@ -8,10 +8,12 @@ import { useVideoKeyBoardControls } from "@/hook/video";
 import PlayBtn from "@/ui/Video/PlayBtn";
 import CurrentTimeBar from "@/ui/Video/CurrentTimeBar";
 import VolumeBar from "@/ui/Video/VolumeBar";
-import HoverShow from "@/ui/HoverShow";
+import HoverShow from "@/css/HoverShow";
 
 
-const Tool = styled(HoverShow)`
+const Tool = styled.div`
+    ${ HoverShow }
+
     height: 100%; width: 100%;
     display: flex;
     flex-direction: row;

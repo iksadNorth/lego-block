@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from 'styled-components';
 
 
-const InputText = styled.textarea`
+const InputText = styled.textarea`${({ theme }) => `
     width: 90%;
     min-height: 40px;
     max-height: 300px;
@@ -10,9 +10,12 @@ const InputText = styled.textarea`
     resize: none;
     padding: 8px;
     font-size: 16px;
-    border: soild 1px gray;
+    border: solid 1px gray;
     border-radius: 4px;
-`;
+
+    color: ${theme.colors.text};
+    background-color: ${theme.colors.background};
+`}`;
 
 const TextArea: React.FC<any> = ({ onChange, ...props }) => {
     const [input, setInput] = useState("");

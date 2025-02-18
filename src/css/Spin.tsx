@@ -1,8 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
 
-interface SpinProps {
-    frequency?: string;
-}
 
 const divSpin = keyframes`
     from {
@@ -13,10 +10,10 @@ const divSpin = keyframes`
     }
 `;
 
-const Spin = styled.div<SpinProps>`${({ frequency }) => css`
+const Spin = css`
     @media (prefers-reduced-motion: no-preference) {
-        animation: ${divSpin} infinite ${frequency || '1s'} linear;
+        animation: ${divSpin} infinite 1s linear;
     }
-`}`;
+`;
 
 export default Spin;

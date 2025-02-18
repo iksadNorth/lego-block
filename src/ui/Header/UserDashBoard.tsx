@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { UserLogginBedge } from "@/views/UserLogginBedge";
+import LogginProfile from "../LogginProfile";
 import { GoogleLoginButton } from "@/ui/GoogleLoginButton";
 
 
@@ -16,9 +16,8 @@ const Card = styled.div`
 export const UserDashBoard = () => {
     return (<>
         <Card>
-            <div>
-                <GoogleLoginButton />
-            </div>
+            <GoogleLoginButton />
+            <LogginProfile />
         </Card>
     </>);
 };

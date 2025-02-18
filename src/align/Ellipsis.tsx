@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import { css } from "styled-components";
 
 
-const Ellipsis = styled.span`
+const Ellipsis = css`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
