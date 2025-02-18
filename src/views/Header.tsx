@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styled from 'styled-components';
 import IconBtn from "@/ui/IconBtn";
 import { Modal } from "@/align/Modal";
@@ -8,6 +8,7 @@ import { faOpenid } from '@fortawesome/free-brands-svg-icons';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ThemeBtn from "../theme/ThemeBtn";
 import SearchBox from "../ui/SearchBox";
+import { fetchVideoList, useVideoList } from "../store/VideoList";
 
 export const HeaderStyled = styled.div`
     display: flex;
@@ -36,6 +37,14 @@ const ModalContent = styled.div`
 const Header: React.FC = ({ ...props }) => {
     const modalRef = useRef<Modal>(null);
 
+    // 검색바
+    const [ keyword, setKeyword ] = useState<string>('');
+    const { setQueue } = useVideoList();
+    const handleSearchBox = async () => {
+        const res = await fetchVideoList({ keyword });
+        setQueue(res.items);
+    };
+
     const handleClickLogginProfile = () => {
         if (modalRef.current) {
             modalRef.current.open();
@@ -48,7 +57,7 @@ const Header: React.FC = ({ ...props }) => {
                 <IconBtnStyled icon={ faOpenid } />
             </div>
             <div>
-                <SearchBox />
+                <SearchBox onChange={setKeyword} onClick={handleSearchBox}/>
             </div>
             <div>
                 <IconBtnStyled icon={ faPlus } />

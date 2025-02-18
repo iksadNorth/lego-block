@@ -26,10 +26,20 @@ export const useVideoMetaData = create<any>((set) => ({
     setData: (item: any) => set(() => ({ data: item })),
 }));
 
-export const fetchVideoList = async () => {
-    const res = await api.get(
-        `/api/v1/videos?sort=-created_at`
-    );
+interface fetchVideoListProps {
+    keyword?: string;
+}
+export const fetchVideoList = async ({ keyword }: fetchVideoListProps = {}) => {
+    let url = '';
+    if(keyword) {
+        url = `/api/v1/videos?keyword=${keyword}&sort=-created_at`;
+    } else {
+        url = `/api/v1/videos?sort=-created_at`;
+    }
+
+    console.log(url);
+    
+    const res = await api.get(url);
     return res.data;
 };
 
