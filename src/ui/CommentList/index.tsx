@@ -9,7 +9,7 @@ import { convertToKoreanUnit } from "../../utils";
 import Flex from "../../align/Flex";
 import RegisterComment from "./RegisterComment";
 import ContextMenu, { MenuItem } from "../ContextMenu";
-import { fetchCommentList, useCommentList, deleteCommentById } from "../../store/CommentList";
+import { useCommentStore, deleteCommentById } from "../../store/CommentList";
 
 
 const ContainerStyled = styled(Flex)`
@@ -40,7 +40,7 @@ interface CommentListProps {
     items?: any[];
 }
 const CommentList: React.FC<CommentListProps> = ({ totalCount, items }) => {
-    const { setQueue } = useCommentList();
+    const { fetchItems } = useCommentStore();
     const { videoId } = useParams();
 
     const deleteComment = async (selected: HTMLDivElement) => {
@@ -52,8 +52,7 @@ const CommentList: React.FC<CommentListProps> = ({ totalCount, items }) => {
             
             // 댓글 리프레쉬
             if(!videoId) return;
-            const items = await fetchCommentList({ videoId });
-            setQueue(items);
+            await fetchItems({ videoId });;
         } catch (error) {
             console.error("Error:", error);
         }

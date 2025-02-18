@@ -2,28 +2,19 @@ import React, { useEffect } from "react";
 import VideoHolder from "@/ui/VideoHolder";
 import ItemList from "../align/ItemList";
 
-import { useVideoList, VideoItemProps, fetchVideoList } from "../store/VideoList";
+import { useVideoStore } from "../store/VideoList";
 
 
-interface VideoApiProps {
-    items: VideoItemProps[];
-}
 const Home = () => {
-    const { queue, setQueue } = useVideoList();
+    const { items, fetchItems } = useVideoStore();
 
     useEffect(() => {
-        fetchVideoList().then(
-            (res: VideoApiProps) => res?.items || []
-        ).then(
-            (res: VideoItemProps[]) => setQueue(res)
-        ).catch(
-            (error) => setQueue([])
-        );
+        fetchItems();
     }, []);
     
     return (
         <ItemList minwidth={'250px'}>
-            { queue.map((item, index) => <VideoHolder key={index} { ...item }/>) }
+            { items.map((item, index) => <VideoHolder key={index} { ...item }/>) }
         </ItemList>
     )
 };

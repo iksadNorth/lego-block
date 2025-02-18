@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Bedge, { BedgeMode } from "../Bedge";
 import TextArea from "../TextArea";
 import { useParams } from "react-router-dom";
-import { fetchCommentList, insertComment, useCommentList } from "../../store/CommentList";
+import { insertComment, useCommentStore } from "../../store/CommentList";
 
 
 const BedgeStyled = styled(Bedge)`
@@ -26,7 +26,7 @@ interface RegisterCommentProps {
 const RegisterComment: React.FC<RegisterCommentProps> = () => {
     const [ text, setText ] = useState('');
     const { videoId } = useParams();
-    const { setQueue } = useCommentList();
+    const { fetchItems } = useCommentStore();
     
     const registComment = async () => {
         try {
@@ -34,8 +34,7 @@ const RegisterComment: React.FC<RegisterCommentProps> = () => {
             await insertComment({ videoId, text })
             
             // 댓글 리프레쉬
-            const items = await fetchCommentList({ videoId });
-            setQueue(items);
+            await fetchItems({ videoId });
 
         } catch {
             alert('등록 실패');

@@ -2,28 +2,21 @@ import { create } from "zustand";
 import api from "@/api/axio";
 
 // 댓글 스토어
-export interface VideoItemProps {
-    thumbnail?: string;
-    title?: string;
-    publisher?: string;
-    numViews?: number;
-    created_at?: string;
-    videoId?: string;
-    bdsrc?: string;
-}
-interface VideoStore {
-    queue: VideoItemProps[];
-    setQueue: (items: VideoItemProps[]) => void;
-    appendQueue: (items: VideoItemProps[]) => void;
-}
-export const useVideoList = create<VideoStore>((set) => ({
-    queue: [],
-    setQueue: (items) => set(() => ({ queue: items })),
-    appendQueue: (items) => set((state) => ({ queue: [...state.queue, ...items] })),
-}));
-export const useVideoMetaData = create<any>((set) => ({
-    data: {},
-    setData: (item: any) => set(() => ({ data: item })),
+export const useVideoStore = create<any>((set) => ({
+    metaData: {},
+    items: [],
+
+    setMetaData: (metaData: any) => set(() => ({ metaData })),
+    setItems: (items: any) => set(() => ({ items })),
+
+    fetchMetaData: async ({ videoId }: { videoId:  string }) => {
+        const res = await fetchVideoMetaData({ videoId });        
+        set({ metaData: res });
+    },
+    fetchItems: async ({ keyword }: fetchVideoListProps = {}) => {
+        const res = await fetchVideoList({ keyword });
+        set({ items: res.items });
+    },
 }));
 
 interface fetchVideoListProps {
@@ -36,8 +29,6 @@ export const fetchVideoList = async ({ keyword }: fetchVideoListProps = {}) => {
     } else {
         url = `/api/v1/videos?sort=-created_at`;
     }
-
-    console.log(url);
     
     const res = await api.get(url);
     return res.data;

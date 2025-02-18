@@ -8,7 +8,7 @@ import { faOpenid } from '@fortawesome/free-brands-svg-icons';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ThemeBtn from "../theme/ThemeBtn";
 import SearchBox from "../ui/SearchBox";
-import { fetchVideoList, useVideoList } from "../store/VideoList";
+import { useVideoStore } from "../store/VideoList";
 
 export const HeaderStyled = styled.div`
     display: flex;
@@ -39,10 +39,9 @@ const Header: React.FC = ({ ...props }) => {
 
     // 검색바
     const [ keyword, setKeyword ] = useState<string>('');
-    const { setQueue } = useVideoList();
+    const { fetchItems } = useVideoStore();
     const handleSearchBox = async () => {
-        const res = await fetchVideoList({ keyword });
-        setQueue(res.items);
+        fetchItems({ keyword });
     };
 
     const handleClickLogginProfile = () => {

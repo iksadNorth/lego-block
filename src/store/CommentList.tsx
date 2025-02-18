@@ -2,17 +2,16 @@ import { create } from "zustand";
 import api from "@/api/axio";
 
 // 댓글 스토어
-export interface CommentItemProps {
-}
-interface CommentStore {
-    queue: CommentItemProps[];
-    setQueue: (items: CommentItemProps[]) => void;
-    appendQueue: (items: CommentItemProps[]) => void;
-}
-export const useCommentList = create<CommentStore>((set) => ({
-    queue: [],
-    setQueue: (items) => set(() => ({ queue: items })),
-    appendQueue: (items) => set((state) => ({ queue: [...state.queue, ...items] })),
+export const useCommentStore = create<any>((set) => ({
+    items: [],
+    totalCount: 0,
+    
+    setItems: (items: any) => set(() => ({ items })),
+
+    fetchItems: async ({ videoId }: { videoId: string }) => {
+        const res = await fetchCommentList({ videoId });
+        set({ totalCount: res.totalCount, items: res.items });
+    },
 }));
 
 export const fetchCommentList = async ({ videoId }: { videoId: string }) => {
