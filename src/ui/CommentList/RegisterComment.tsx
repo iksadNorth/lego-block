@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import IconBtn from "../IconBtn";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import styled from 'styled-components';
-import api from "../../api/axio";
 
 import Bedge, { BedgeMode } from "../Bedge";
 import TextArea from "../TextArea";
 import { useParams } from "react-router-dom";
+import { fetchCommentList, insertComment, useCommentList } from "../../store/CommentList";
 
 
 const BedgeStyled = styled(Bedge)`
@@ -26,15 +26,20 @@ interface RegisterCommentProps {
 const RegisterComment: React.FC<RegisterCommentProps> = () => {
     const [ text, setText ] = useState('');
     const { videoId } = useParams();
+    const { setQueue } = useCommentList();
     
-    const registComment = () => {
-        api.post(`/api/v1/videos/${videoId}/comments`, {
-            comment: text,
-        }).then((res) => {
-            // 댓글 새로고침
-        }).catch((err) => {
+    const registComment = async () => {
+        try {
+            if(!videoId) return;
+            await insertComment({ videoId, text })
+            
+            // 댓글 리프레쉬
+            const items = await fetchCommentList({ videoId });
+            setQueue(items);
+
+        } catch {
             alert('등록 실패');
-        });
+        }
     };
 
     return (<>

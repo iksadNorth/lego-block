@@ -6,16 +6,16 @@ const Container = styled.div`
     width: 95%;
 `;
 
-const ContextMenuTab = styled.div<{ x: number; y: number }>`
+const ContextMenuTab = styled.div<{ x: number; y: number }>`${({ theme, x, y }) => `
     position: absolute;
-    top: ${({ y }) => y}px;
-    left: ${({ x }) => x}px;
-    background: white;
+    left: ${x}px; top: ${y}px;
+    color: ${theme.colors.text};
+    background-color: ${theme.colors.background};
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 10px;
     border: 1px solid #ddd;
-`;
+`}`;
 
 interface MenuChildProps {
     selected?: ReactNode;
@@ -69,13 +69,13 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuchild, eventNet
 export default ContextMenu;
 
 
-const MenuItemStyle = styled.div`
+const MenuItemStyle = styled.div`${({ theme }) => `
     padding: 8px 12px;
     cursor: pointer;
     &:hover {
-        background-color: #f0f0f0;
+        background-color: ${theme.colors.backgroundHover};
     }
-`;
+`}`;
 
 interface MenuItemProps {
     children?: ReactNode;

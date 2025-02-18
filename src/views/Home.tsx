@@ -1,45 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import VideoHolder from "@/ui/VideoHolder";
 import ItemList from "../align/ItemList";
 
-import api from "@/api/axio";
+import { useVideoList, VideoItemProps, fetchVideoList } from "../store/VideoList";
 
 
-interface VideoItemProps {
-    thumbnail?: string;
-    title?: string;
-    publisher?: string;
-    numViews?: Number;
-    created_at?: string;
-    videoId?: string;
-    bdsrc?: string;
-}
 interface VideoApiProps {
     items: VideoItemProps[];
 }
 const Home = () => {
-    const [items, setItems] = useState<VideoItemProps[]>([]);
-
-    const fetchData = async () => {
-        try {
-            const res = await api.get(
-                `/api/v1/videos?sort=-created_at`
-            );
-            return res.data;
-        } catch {
-            return [];
-        }
-    };
+    const { queue, setQueue } = useVideoList();
 
     useEffect(() => {
-        fetchData().then(
-            (res: VideoApiProps) => res?.items || [null]
-        ).then(setItems);
+        fetchVideoList().then(
+            (res: VideoApiProps) => res?.items || []
+        ).then(
+            (res: VideoItemProps[]) => setQueue(res)
+        ).catch(
+            (error) => setQueue([])
+        );
     }, []);
     
     return (
         <ItemList minwidth={'250px'}>
-            { items.map((item, index) => <VideoHolder key={index} { ...item }/>) }
+            { queue.map((item, index) => <VideoHolder key={index} { ...item }/>) }
         </ItemList>
     )
 };

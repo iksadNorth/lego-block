@@ -1,5 +1,6 @@
-import React, { Children, ReactNode } from "react";
+import React from "react";
 import IconBtn from "../IconBtn";
+import { useParams } from "react-router-dom";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import styled from 'styled-components';
 
@@ -8,7 +9,7 @@ import { convertToKoreanUnit } from "../../utils";
 import Flex from "../../align/Flex";
 import RegisterComment from "./RegisterComment";
 import ContextMenu, { MenuItem } from "../ContextMenu";
-import api from "../../api/axio";
+import { fetchCommentList, useCommentList, deleteCommentById } from "../../store/CommentList";
 
 
 const ContainerStyled = styled(Flex)`
@@ -39,13 +40,20 @@ interface CommentListProps {
     items?: any[];
 }
 const CommentList: React.FC<CommentListProps> = ({ totalCount, items }) => {
+    const { setQueue } = useCommentList();
+    const { videoId } = useParams();
+
     const deleteComment = async (selected: HTMLDivElement) => {
         const commentId = selected.dataset.commentId;
         if (!commentId) return;
 
         try {
-            const response = await api.delete(`/api/v1/comments/${commentId}`);
+            await deleteCommentById({ commentId });
+            
             // 댓글 리프레쉬
+            if(!videoId) return;
+            const items = await fetchCommentList({ videoId });
+            setQueue(items);
         } catch (error) {
             console.error("Error:", error);
         }

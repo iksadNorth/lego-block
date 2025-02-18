@@ -8,6 +8,9 @@ import Video from "@/ui/Video";
 import MetaData from "@/ui/MetaData";
 import CommentList from "@/ui/CommentList"
 
+import { useCommentList, fetchCommentList } from "../store/CommentList";
+import { fetchVideoMetaData, useVideoMetaData } from "../store/VideoList";
+
 
 const Div = styled.div`
     max-width: 1000px;
@@ -24,33 +27,33 @@ const Div = styled.div`
 const backURL = import.meta.env.VITE_API_BACKEND_URL;
 const Watch = () => {
     const { videoId } = useParams();
-    const [data, setData] = useState([]);
+    const { queue: commentList, setQueue: setCommentList } = useCommentList();
+    const { data: metaDataState, setData: setMetaData } = useVideoMetaData();
 
-    const fetchData = (videoId: string) => async () => {
+    const fetchData = async ({ videoId }: { videoId: string }) => {
         if(!videoId) return {};
 
         const [metadata, comments] = await Promise.all([
-            api(`/api/v1/videos/${videoId}/metadatas`).then(res => res.data),
-            api(`/api/v1/videos/${videoId}/comments?page_size=10&page=1&sort=-created_at`).then(res => res.data),
+            fetchVideoMetaData({ videoId }),
+            fetchCommentList({ videoId }),
         ]);
-        
-        return {
-            ...metadata, ...comments,
-            videoId: videoId,
-        };
+
+        // 스토어 동기화
+        setCommentList(comments);
+        setMetaData(metadata);
     };
 
     useEffect(() => {
         if(!videoId) return;
-        fetchData(videoId)().then(setData);
+        fetchData({ videoId });
     }, []);
 
     return (<>
         <VideoProvider>
             <Div>
                 <Video srcUrl={`${backURL}/api/v1/videos/${videoId}`}></Video>
-                <MetaData {...data} />
-                <CommentList {...data} />
+                <MetaData {...metaDataState} />
+                <CommentList {...commentList} />
             </Div>
         </VideoProvider>
     </>)};
