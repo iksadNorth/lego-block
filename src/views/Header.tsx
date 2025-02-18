@@ -8,7 +8,7 @@ import { faOpenid } from '@fortawesome/free-brands-svg-icons';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ThemeBtn from "../theme/ThemeBtn";
 import SearchBox from "../ui/SearchBox";
-import { useVideoStore } from "../store/VideoList";
+import { useVideoStore } from "../store/VideoStore";
 
 export const HeaderStyled = styled.div`
     display: flex;

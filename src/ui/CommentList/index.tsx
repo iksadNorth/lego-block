@@ -9,7 +9,7 @@ import { convertToKoreanUnit } from "../../utils";
 import Flex from "../../align/Flex";
 import RegisterComment from "./RegisterComment";
 import ContextMenu, { MenuItem } from "../ContextMenu";
-import { useCommentStore, deleteCommentById } from "../../store/CommentList";
+import { useCommentStore, deleteCommentById } from "../../store/CommentStore";
 
 
 const ContainerStyled = styled(Flex)`

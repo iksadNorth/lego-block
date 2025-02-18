@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Bedge, { BedgeMode } from "../Bedge";
 import TextArea from "../TextArea";
 import { useParams } from "react-router-dom";
-import { insertComment, useCommentStore } from "../../store/CommentList";
+import { insertComment, useCommentStore } from "../../store/CommentStore";
 
 
 const BedgeStyled = styled(Bedge)`

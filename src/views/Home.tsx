@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import VideoHolder from "@/ui/VideoHolder";
 import ItemList from "../align/ItemList";
 
-import { useVideoStore } from "../store/VideoList";
+import { useVideoStore } from "../store/VideoStore";
 
 
 const Home = () => {

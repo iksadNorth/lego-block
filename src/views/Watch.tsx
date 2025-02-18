@@ -7,8 +7,8 @@ import Video from "@/ui/Video";
 import MetaData from "@/ui/MetaData";
 import CommentList from "@/ui/CommentList"
 
-import { useCommentStore } from "../store/CommentList";
-import { useVideoStore } from "../store/VideoList";
+import { useCommentStore } from "../store/CommentStore";
+import { useVideoStore } from "../store/VideoStore";
 
 
 const Div = styled.div`
