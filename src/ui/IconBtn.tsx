@@ -40,7 +40,7 @@ const IconBtn: React.FC<IcontBtnProp> = ({ children, icon, onClick }) => {
         <ButtonStyled onClick={onClick}>
             <IconContainer>
                 {icon ? <FontAwesomeIcon icon={icon} /> : ''}
-                <Span className='text'>{children}</Span>
+                { children ? <Span className='text'>{ children }</Span> : '' }
             </IconContainer>
         </ButtonStyled>
     </>);

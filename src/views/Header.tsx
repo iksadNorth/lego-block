@@ -7,7 +7,7 @@ import { UserDashBoard } from "../ui/Header/UserDashBoard";
 import { faOpenid } from '@fortawesome/free-brands-svg-icons';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ThemeBtn from "../theme/ThemeBtn";
-
+import SearchBox from "../ui/SearchBox";
 
 export const HeaderStyled = styled.div`
     display: flex;
@@ -48,7 +48,7 @@ const Header: React.FC = ({ ...props }) => {
                 <IconBtnStyled icon={ faOpenid } />
             </div>
             <div>
-                <input type='text' name='keyword'/>
+                <SearchBox />
             </div>
             <div>
                 <IconBtnStyled icon={ faPlus } />
