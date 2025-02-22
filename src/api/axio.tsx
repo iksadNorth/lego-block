@@ -11,7 +11,8 @@ const api = axios.create({
 // 요청 인터셉터
 api.interceptors.request.use(
     (config) => {
-        const userInfo = JSON.parse(localStorage.getItem("user_info") || '');
+        const userInfoRaw = JSON.parse(localStorage.getItem("user_info") || '');
+        const userInfo = userInfoRaw?.state?.userInfo;
         if(!userInfo) return config;
 
         const token = userInfo.accessToken;

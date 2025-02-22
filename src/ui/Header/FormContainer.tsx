@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, cloneElement, ReactElement, ReactNode, useMemo } from "react";
 import styled, { css } from "styled-components";
 
 
@@ -24,6 +24,7 @@ export const ValueStyled = css`
 export const KeyStyled = styled.div`
     text-align: center;
     text-overflow: ellipsis;
+    lien-height: 2;
 `;
 export const ValueTextStyled = styled.input.attrs({ type: 'text' })`
     ${ValueStyled}
@@ -103,8 +104,69 @@ export const ValueBoolean: React.FC<OnChangeProps<boolean> & EditableProps & {on
     </>;
 };
 
-export const FormContainer = styled.div`
+interface InputField<T> {
+    name: string;
+    keyName: string;
+    value?: T;
+    onChange?: (dict: object) => void;
+    edit?: boolean;
+}
+export const InputField: React.FC<InputField<string>> = ({ name, keyName, value, onChange, edit=true }) => {
+    const [ input, setInput ] = useState(value || '');
+
+    useEffect(() => {
+        if(!onChange) return;
+        onChange({[keyName]: input});
+    }, [input]);
+
+    const handleValueInputChange = (v: string) => {
+        debugger
+        setInput((prev) => (prev !== v ? v : prev));
+    };
+
+    return <>
+        <KeyStyled>{ name || keyName }</KeyStyled>
+        <ValueInput edit={edit} value={ input } onChange={handleValueInputChange}/>
+    </>;
+};
+
+const FormContainerStyled = styled.div`
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 10px;
+    align-items: center;
 `;
+
+interface FormContainerProps {
+    children?: ReactNode;
+    value?: any;
+    onChange?: any;
+}
+export const FormContainer: React.FC<FormContainerProps> = ({ children, value, onChange }) => {
+    const [ obj, setObj ] = useState<object>({});
+
+    useEffect(() => {
+        if(!onChange) return;
+        onChange(obj);
+    }, [obj]);
+
+    const memoizedChildren = useMemo(() => {
+        return React.Children.map(children, (child) => {
+            if(!(React.isValidElement(child) && child.type === InputField)) return child;
+            const props: any = {};
+            if (child.props?.keyName && child.props.keyName in value) {
+                props[child.props.keyName] = value[child.props.keyName];
+            }
+            props.onChange = (newValue: object) => {
+                setObj((prev) => ({ ...prev, ...newValue }));
+            };
+            return cloneElement(child as ReactElement<InputField<string>>, props);
+        });
+    }, [children, obj]);
+
+    return <>
+        <FormContainerStyled>
+            { memoizedChildren }
+        </FormContainerStyled>
+    </>;
+};

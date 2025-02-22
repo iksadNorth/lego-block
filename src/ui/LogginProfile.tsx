@@ -1,14 +1,13 @@
 import React from "react";
-import useLocalStorage from "@/hook/storage";
 import Bedge from "@/ui/Bedge";
-import { initialValueUserInfo, UserInfoProps } from "@/api/AuthGoogleCallback";
+import useUserInfoStore from "../store/UserInfoStore";
 
 
 interface LogginProfileProps {
     onClick?: React.MouseEventHandler;
 }
 const LogginProfile: React.FC<LogginProfileProps> = ({ onClick }) => {
-    const [ userInfo ] = useLocalStorage<UserInfoProps>('user_info', initialValueUserInfo);
+    const { userInfo } = useUserInfoStore();
     
     return userInfo.accessToken ? (
         <Bedge src={userInfo.bedge_src ?? null} onClick={ onClick }>

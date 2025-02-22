@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
 import LogginProfile from "../LogginProfile";
 import { GoogleLoginButton } from "@/ui/GoogleLoginButton";
-import { ValueBoolean, ValueInput, FormContainer, KeyStyled } from "./FormContainer";
+import UserInfoUpdater from "./UserInfoUpdater";
 
 
 const Card = styled.div`
@@ -15,17 +15,11 @@ const Card = styled.div`
 `;
 
 export const UserDashBoard = () => {
-    const [ tmp, setTmp ] = useState<boolean>(false);
     return (<>
         <Card>
             <GoogleLoginButton />
             <LogginProfile />
-            <FormContainer>
-                <KeyStyled onClick={() => setTmp((prev) => !prev)}>편집</KeyStyled>
-                <ValueBoolean edit={tmp}/>
-                <KeyStyled onClick={() => setTmp((prev) => !prev)}>이름</KeyStyled>
-                <ValueInput edit={tmp}/>
-            </FormContainer>
+            <UserInfoUpdater />
         </Card>
     </>);
 };

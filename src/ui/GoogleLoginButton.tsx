@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import useLocalStorage from "@/hook/storage";
-import { initialValueUserInfo, UserInfoProps } from "@/api/AuthGoogleCallback";
+import useUserInfoStore from "../store/UserInfoStore";
 
 
 export const FRONT_URL = import.meta.env.VITE_API_FRONTEND_URL;
@@ -73,7 +72,7 @@ const GoogleIcon = styled.img`
 `;
 
 export const GoogleLoginButton = () => {
-    const [ userInfo, _, removeUserInfo ] = useLocalStorage<UserInfoProps>('user_info', initialValueUserInfo);
+    const { userInfo, removeUserInfo } = useUserInfoStore();
 
     const CLIENT_ID = "166933239001-7hecbc575m8g9n3l9lt7idjb2570brov.apps.googleusercontent.com";
     const REDIRECT_URI = `${FRONT_URL}/auth/google/callback`;
