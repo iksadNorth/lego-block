@@ -42,7 +42,14 @@ interface ThemeContextProp {
     children: ReactNode
 }
 export const ThemeControlProvider: React.FC<ThemeContextProp> = ({ children }) => {
-    const [ theme, setTheme ] = useState<ThemeType>(lightTheme);
+    const initThemeKey = localStorage.getItem('thema-value');
+    const initTheme = (initThemeKey) ? JSON.parse(initThemeKey) : lightTheme;
+    const [ theme, baseSetTheme ] = useState<ThemeType>(initTheme);
+
+    const setTheme = (theme: ThemeType) => {
+        localStorage.setItem('thema-value', JSON.stringify(theme));
+        baseSetTheme(theme);
+    };
 
     return (
         <ThemeControlContext.Provider value={{ setTheme }}>
