@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import api from "@/api/axio";
+import api from "../api/axio";
 
 
 export interface UserInfoProps {

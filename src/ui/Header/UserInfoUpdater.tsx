@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ValueBoolean, FormContainer, InputField } from "./FormContainer";
 import useUserInfoStore, { UserInfoProps, UserInfoUpdateProps } from "../../store/UserInfoStore";
 

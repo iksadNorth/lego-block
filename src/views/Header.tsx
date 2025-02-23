@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import styled from 'styled-components';
-import IconBtn from "@/ui/IconBtn";
-import { Modal } from "@/align/Modal";
-import LogginProfile from "@/ui/LogginProfile";
+import IconBtn from "../ui/IconBtn";
+import { Modal } from "../align/Modal";
+import LogginProfile from "../ui/LogginProfile";
 import { UserDashBoard } from "../ui/Header/UserDashBoard";
 import { faOpenid } from '@fortawesome/free-brands-svg-icons';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";

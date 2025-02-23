@@ -1,5 +1,5 @@
-import Router from "@/Router"
-import Proxy from "@/Proxy";
+import Router from "./Router"
+import Proxy from "./Proxy"
 
 
 function App() {

@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import IconBtn from '@/ui/IconBtn';
-import Fill from '@/size/Fill';
+import IconBtn from '../ui/IconBtn';
+import Fill from '../size/Fill';
 import { faHome, faBoltLightning, faBoxTissue, faClock, faPlayCircle, faVideo, faMobile, faLadderWater, faThumbsUp, faScissors } from "@fortawesome/free-solid-svg-icons";
-import Line from '@/ui/Line';
-import Bedge from '@/ui/Bedge';
+import Line from '../ui/Line';
+import Bedge from '../ui/Bedge';
 
 
 const IconBtnFull = styled(IconBtn)`

@@ -25,7 +25,7 @@ interface ContextMenuProps {
     menuchild?: ReactElement<MenuChildProps>;
     eventNet?: string;
 }
-const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuchild, eventNet, ...props }) => {
+const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuchild, eventNet }) => {
     const [ selectedRef, setSelectedRef ] = useState<Element | null>(null);
     const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
     const handleContextMenu = (event: React.MouseEvent) => {

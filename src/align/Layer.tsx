@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Preset, { PresetProps } from "@/size/Preset";
+import Preset, { PresetProps } from "../size/Preset";
 
 
 export const Frame = styled(Preset)<PresetProps>`

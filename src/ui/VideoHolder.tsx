@@ -1,7 +1,7 @@
 import { useNavigate }  from "react-router-dom";
 import styled from "styled-components";
-import Bedge from "@/ui/Bedge";
-import { convertToKoreanUnit, timeAgo } from "@/utils";
+import Bedge from "./Bedge";
+import { convertToKoreanUnit, timeAgo } from "../utils";
 import HoverShadow from "../css/HoverShadow";
 
 

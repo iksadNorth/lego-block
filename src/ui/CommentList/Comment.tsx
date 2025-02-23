@@ -1,7 +1,7 @@
 import React from "react";
 import Bedge from "../Bedge";
 import { addBookMark } from "./Bookmark";
-import { timeAgo } from "@/utils";
+import { timeAgo } from "../../utils";
 import styled from "styled-components";
 import { BedgeMode } from "../Bedge";
 

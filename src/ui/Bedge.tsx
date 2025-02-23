@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import Ellipsis from '@/align/Ellipsis';
+import Ellipsis from '../align/Ellipsis';
 
 
 const BedgeStyled = styled.img`

@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-import Header   from '@/views/Header';
-import Nav      from '@/views/Nav';
-import Center   from '@/align/Center';
-import Footer   from '@/views/Footer';
+import Header from "../views/Header";
+import Nav from "../views/Nav";
+import Center from "./Center";
+import Footer from "../views/Footer";
 
 
 let LayoutStyle = styled.div`

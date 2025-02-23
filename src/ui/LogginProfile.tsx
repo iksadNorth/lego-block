@@ -1,5 +1,5 @@
 import React from "react";
-import Bedge from "@/ui/Bedge";
+import Bedge from "./Bedge";
 import useUserInfoStore from "../store/UserInfoStore";
 
 

@@ -1,7 +1,6 @@
-import React from "react";
 import styled from 'styled-components';
 import LogginProfile from "../LogginProfile";
-import { GoogleLoginButton } from "@/ui/GoogleLoginButton";
+import { GoogleLoginButton } from "../GoogleLoginButton";
 import UserInfoUpdater from "./UserInfoUpdater";
 
 

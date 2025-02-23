@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 
 interface DataContextProps<T, E, U> {
     data: T | null;

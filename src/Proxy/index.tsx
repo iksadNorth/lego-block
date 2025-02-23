@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { ThemeControlProvider } from '@/theme';
+import ThemeControlProvider from "../theme";
 
 interface ProxyProp {
     children: ReactNode

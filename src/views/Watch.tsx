@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-import VideoProvider from "@/Proxy/Video";
-import Video from "@/ui/Video";
-import MetaData from "@/ui/MetaData";
-import CommentList from "@/ui/CommentList"
+import VideoProvider from "../Proxy/Video";
+import Video from "../ui/Video";
+import MetaData from "../ui/MetaData";
+import CommentList from "../ui/CommentList";
 
 import { useCommentStore } from "../store/CommentStore";
 import { useVideoStore } from "../store/VideoStore";

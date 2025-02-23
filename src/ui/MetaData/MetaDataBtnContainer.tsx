@@ -7,7 +7,7 @@ interface MetaDataBtnContainerProps {
     numLikes?: number;
     numDislikes?: number;
 }
-const MetaDataBtnContainer: React.FC<MetaDataBtnContainerProps> = ({numLikes, numDislikes, ...props}) => {
+const MetaDataBtnContainer: React.FC<MetaDataBtnContainerProps> = ({ numLikes }) => {
     return (
         <div>
             <IconBtn icon={faThumbsUp}>

@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { Frame, Layer } from "@/align/Layer";
+import { Frame, Layer } from "../../align/Layer";
 
-import { useVideo } from "@/Proxy/Video";
-import { useVideoKeyBoardControls } from "@/hook/video";
+import { useVideo } from "../../Proxy/Video";
+import { useVideoKeyBoardControls } from "../../hook/video";
 
-import PlayBtn from "@/ui/Video/PlayBtn";
-import CurrentTimeBar from "@/ui/Video/CurrentTimeBar";
-import VolumeBar from "@/ui/Video/VolumeBar";
-import HoverShow from "@/css/HoverShow";
+import PlayBtn from "./PlayBtn";
+import CurrentTimeBar from "./CurrentTimeBar";
+import VolumeBar from "./VolumeBar";
+import HoverShow from "../../css/HoverShow";
 
 
 const Tool = styled.div`

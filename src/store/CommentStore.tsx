@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import api from "@/api/axio";
+import api from "../api/axio";
 
 // 댓글 스토어
 export const useCommentStore = create<any>((set) => ({

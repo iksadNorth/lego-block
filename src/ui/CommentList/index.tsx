@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import styled from 'styled-components';
 
-import { Comment } from '@/ui/CommentList/Comment';
+import { Comment } from "./Comment";
 import { convertToKoreanUnit } from "../../utils";
 import Flex from "../../align/Flex";
 import RegisterComment from "./RegisterComment";

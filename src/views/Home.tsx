@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import VideoHolder from "@/ui/VideoHolder";
+import { useEffect } from "react";
+import VideoHolder from "../ui/VideoHolder";
 import ItemList from "../align/ItemList";
 
 import { useVideoStore } from "../store/VideoStore";

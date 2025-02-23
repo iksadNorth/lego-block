@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { ReactNode } from 'react';
-import Ellipsis from '@/align/Ellipsis';
+import Ellipsis from '../align/Ellipsis';
 
 
 const Span = styled.div`${ Ellipsis }`;

@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Test from "@/views/Test";
-import Layout from "@/align/Layout";
-import AuthGoogleCallback from '@/api/AuthGoogleCallback';
-import Home from "@/views/Home";
-import Watch from "@/views/Watch";
+import Test from "./views/Test";
+import Layout from "./align/Layout";
+import AuthGoogleCallback from "./api/AuthGoogleCallback";
+import Home from "./views/Home";
+import Watch from "./views/Watch";
 
 
 const Router: React.FC = () => {
