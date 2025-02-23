@@ -37,7 +37,7 @@ interface VideoProps {
 }
 const Video: React.FC<VideoProps> = ({ srcUrl }) => {
     const videoRef = useVideo();
-    if(!videoRef || !videoRef.current) return <></>;
+    if(!videoRef) return <></>;
     useVideoKeyBoardControls(videoRef);
 
     return <>
