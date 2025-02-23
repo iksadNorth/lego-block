@@ -5,3 +5,17 @@ services:
       - 4873:4873
     volumes:
       - ./verdaccio:/verdaccio
+  
+  web:
+    build: .
+    container_name: mytube
+    # ports:
+    #   - 80:80
+    network_mode: "host"
+    environment:
+      - API_SVR_URL=${API_SVR_URL:-localhost}
+      - API_SVR_PORT=${API_SVR_PORT:-8000}
+    volumes:
+      - ${ROOT_DIR_STATIC}/static:/var/www/static:ro
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/log:/var/log/nginx
