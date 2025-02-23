@@ -25,9 +25,9 @@ interface fetchVideoListProps {
 export const fetchVideoList = async ({ keyword }: fetchVideoListProps = {}) => {
     let url = '';
     if(keyword) {
-        url = `/api/v1/videos?keyword=${keyword}&sort=-created_at`;
+        url = `/api/v1/videos?page=1&page_size=100&sort=-created_at&keyword=${keyword}`;
     } else {
-        url = `/api/v1/videos?sort=-created_at`;
+        url = `/api/v1/videos?page=1&page_size=100&sort=-created_at`;
     }
     
     const res = await api.get(url);
