@@ -120,7 +120,6 @@ export const InputField: React.FC<InputField<string>> = ({ name, keyName, value,
     }, [input]);
 
     const handleValueInputChange = (v: string) => {
-        debugger
         setInput((prev) => (prev !== v ? v : prev));
     };
 
