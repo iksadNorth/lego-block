@@ -153,9 +153,11 @@ export const FormContainer: React.FC<FormContainerProps> = ({ children, value, o
     const memoizedChildren = useMemo(() => {
         return React.Children.map(children, (child) => {
             if(!(React.isValidElement(child) && child.type === InputField)) return child;
+            const childProps = child.props as { keyName: string };
+
             const props: any = {};
-            if (child.props?.keyName && child.props.keyName in value) {
-                props[child.props.keyName] = value[child.props.keyName];
+            if ("keyName" in childProps && childProps.keyName in value) {
+                props[childProps.keyName] = value[childProps.keyName];
             }
             props.onChange = (newValue: object) => {
                 setObj((prev) => ({ ...prev, ...newValue }));

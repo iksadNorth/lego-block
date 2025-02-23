@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Bedge from "../Bedge";
 import { addBookMark } from "./Bookmark";
 import { timeAgo } from "../../utils";
@@ -31,14 +31,13 @@ interface CommentProps {
 export const Comment: React.FC<CommentProps> = ({comment, src, nickname, created_at, ...props}) => {
     // 댓글 파싱.
     // 기본적으로 라인 마다 줄바꿈 추가.
-    const parseComment = (text: string) => {
+    const parseComment = (text: string): ReactNode[] => {
         if(!text) return [];
 
         let lines = text.split('\n')
-            .map((line: string) => line.trim())
-            .filter((line: string) => line)
-            .map((line: string) => addBookMark(line))   // 시간 댓글에 북마크 표기.
-            .map((line: string, idx: number) => <span key={idx}>{line}<br/></span>);
+            .map((line) => line.trim())
+            .filter((line) => line)
+            .map((line, idx) => <span key={idx}>{ addBookMark(line) }<br/></span>);
         return lines;
     };
 

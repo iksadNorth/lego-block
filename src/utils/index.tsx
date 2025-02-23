@@ -14,7 +14,7 @@ interface TimeUnit {
     label: string;
     seconds: number;
 }
-export const timeAgo = (isoString: string | null) => {
+export const timeAgo = (isoString: string | null | undefined) => {
     if(!isoString) return '';
 
     const date: Date = new Date(isoString);

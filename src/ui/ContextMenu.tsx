@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode, ReactElement } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import styled from "styled-components";
 
 
@@ -22,7 +22,7 @@ interface MenuChildProps {
 }
 interface ContextMenuProps {
     children?: ReactNode;
-    menuchild?: ReactElement<MenuChildProps>;
+    menuchild?: any;
     eventNet?: string;
 }
 const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuchild, eventNet }) => {
@@ -56,7 +56,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuchild, eventNet
                     {
                         React.Children.map(menuchild, (child) =>
                             React.isValidElement<MenuChildProps>(child) 
-                            ? React.cloneElement(child, { selected: selectedRef }) 
+                            ? React.cloneElement(child, { selected: selectedRef } as MenuChildProps) 
                             : child
                         )
                     }

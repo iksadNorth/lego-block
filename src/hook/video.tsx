@@ -4,7 +4,7 @@ export const useVolume = (videoRef: React.RefObject<HTMLVideoElement | null>) =>
     const [volume, setVolume] = useState(1);
     useEffect(() => {
         if (!videoRef.current) return;
-        const updateVolume = () => setVolume(videoRef.current?.volume);
+        const updateVolume = () => setVolume(videoRef.current?.volume || 1);
         videoRef.current.addEventListener("volumechange", updateVolume);
     
         return () => videoRef.current?.removeEventListener("volumechange", updateVolume);
@@ -20,7 +20,7 @@ export const useCurrentTime = (videoRef: React.RefObject<HTMLVideoElement | null
   
     useEffect(() => {
         if (!videoRef.current) return;
-        const updateTime = () => setCurrentTime(videoRef.current?.currentTime);
+        const updateTime = () => setCurrentTime(videoRef.current?.currentTime || 0);
         videoRef.current.addEventListener("timeupdate", updateTime);
     
         return () => {
@@ -78,7 +78,7 @@ export const usePlaybackRate = (videoRef: React.RefObject<HTMLVideoElement | nul
     const [playbackRate, setPlaybackRate] = useState(1);
     useEffect(() => {
         if (!videoRef.current) return;
-        const updateRate = () => setPlaybackRate(videoRef.current?.playbackRate);
+        const updateRate = () => setPlaybackRate(videoRef.current?.playbackRate || 1.0);
         videoRef.current.addEventListener("ratechange", updateRate);
     
         return () => videoRef.current?.removeEventListener("ratechange", updateRate);

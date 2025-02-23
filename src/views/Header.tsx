@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import styled from 'styled-components';
 import IconBtn from "../ui/IconBtn";
-import { Modal } from "../align/Modal";
+import { Modal, ModalHandle } from "../align/Modal";
 import LogginProfile from "../ui/LogginProfile";
 import { UserDashBoard } from "../ui/Header/UserDashBoard";
 import { faOpenid } from '@fortawesome/free-brands-svg-icons';
@@ -35,7 +35,7 @@ const ModalContent = styled.div`
 `;
 
 const Header: React.FC = ({ ...props }) => {
-    const modalRef = useRef<Modal>(null);
+    const modalRef = useRef<ModalHandle>(null);
 
     // 검색바
     const [ keyword, setKeyword ] = useState<string>('');

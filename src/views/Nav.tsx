@@ -33,7 +33,7 @@ export const Nav: React.FC = ({ ...props }) => {
                 구독
             </IconBtnFull>
 
-            <Line row="true"/>
+            <Line row={true}/>
 
             <div>
                 내 페이지
@@ -60,7 +60,7 @@ export const Nav: React.FC = ({ ...props }) => {
                 내 클립
             </IconBtnFull>
 
-            <Line row="true"/>
+            <Line row={true}/>
 
             <div>
                 구독

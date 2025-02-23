@@ -43,12 +43,12 @@ interface VideoHolderProps {
     thumbnail?: string;
     title?: string;
     publisher?: string;
-    numViews?: Number;
+    numViews?: number;
     created_at?: string;
     videoId?: string;
     bdsrc?: string;
 }
-const VideoHolder: React.FC<VideoHolderProps> = ({ thumbnail, title, publisher, numViews, created_at, videoId, bdsrc, ...props }) => {
+const VideoHolder: React.FC<VideoHolderProps> = ({ thumbnail, title, publisher, numViews, created_at, videoId, bdsrc }) => {
     const navigate = useNavigate();
 
     thumbnail = thumbnail || 'https://cdn.pixabay.com/photo/2017/03/09/12/31/error-2129569_1280.jpg';
@@ -61,7 +61,7 @@ const VideoHolder: React.FC<VideoHolderProps> = ({ thumbnail, title, publisher, 
     return (<>
         <VideoHolderStyled onClick={() => navigate(`/watch/${videoId}`)}>
             <Preview src={ thumbnail } />
-            <BedgeStyle bdalign="start" src={bdsrc}>
+            <BedgeStyle src={bdsrc}>
                 <Content>
                     <span>{ title }</span>
                     <span style={{color: 'gray'}}>{ publisher }</span>

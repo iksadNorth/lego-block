@@ -14,7 +14,7 @@ const Home = () => {
     
     return (
         <ItemList minwidth={'250px'}>
-            { items.map((item, index) => <VideoHolder key={index} { ...item }/>) }
+            { items.map((item: any, index: number) => <VideoHolder key={index} { ...item }/>) }
         </ItemList>
     )
 };

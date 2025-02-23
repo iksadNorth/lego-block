@@ -3,15 +3,19 @@ import useUserInfoStore from "../store/UserInfoStore";
 
 
 export const FRONT_URL = import.meta.env.VITE_API_FRONTEND_URL;
-export const openPopup = (url: string, params={}, options = 'width=400,height=600') => {
-    return new Promise((resolve, reject) => {
+export const openPopup = (
+        url: string, 
+        params: Record<string, string>={}, 
+        options = 'width=400,height=600'
+    ) => {
+    return new Promise<void>((resolve, reject) => {
         const form = document.createElement("form");
         form.method = "GET";
         form.action = url;
         form.target = "popupWindow"; // 새 창의 이름 지정
 
         // 각 파라미터를 form의 hidden input으로 추가
-        Object.keys(params).forEach((key) => {
+        Object.keys(params).forEach((key: string) => {
             const input = document.createElement("input");
             input.type = "hidden";
             input.name = key;
@@ -31,6 +35,9 @@ export const openPopup = (url: string, params={}, options = 'width=400,height=60
 
         form.submit();
         document.body.removeChild(form); // 폼 제거
+
+        // 타입스크립트 빌드로 인해 억지로 넣은 구문. 사용 안할 거임
+        resolve();
     });
 };
 

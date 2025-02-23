@@ -7,7 +7,7 @@ interface InputRangeProps {
     disabled?: boolean;
     children?: ReactNode;
     value?: Number;
-    onChange?: React.MouseEventHandler<HTMLVideoElement>;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onMouseUp?: React.MouseEventHandler<HTMLVideoElement>;
     onMouseDown?: React.MouseEventHandler<HTMLVideoElement>;
 }

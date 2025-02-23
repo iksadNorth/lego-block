@@ -40,7 +40,7 @@ const HeightMode: (mode: BedgeMode | null) => string = (mode) => {
 interface BedgeProps {
     children: ReactNode;
     mode?: BedgeMode;
-    src?: string;
+    src?: string | null;
     onClick?: React.MouseEventHandler;
 }
 const Bedge: React.FC<BedgeProps> = ({ children, mode, src, onClick, ...props }) => {

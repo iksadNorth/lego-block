@@ -27,7 +27,7 @@ const VolumeBar = () => {
 
     return <>
         <InputRange 
-            row={false} value={volume} onChange={(e) => setVolume(e.target.value)}
+            row={false} value={volume} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setVolume(Number(e.target.value))}
         >
             <Div>
                 <FontAwesomeIcon icon={ faVolumeUp } />

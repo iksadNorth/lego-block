@@ -55,7 +55,7 @@ const CurrentTimeBar = () => {
 
     return <>
         <InputRange 
-            row={true} value={getScaleFromBar(seekingTime)} onChange={(e) => change(e.target.value)}
+            row={true} value={getScaleFromBar(seekingTime)} onChange={(e) => change(Number(e.target.value))}
             onMouseUp={mouseUp} onMouseDown={mouseDown}
         >
             { getTimeFormatted(seekingTime) }

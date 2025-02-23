@@ -49,7 +49,7 @@ const useUserInfoStore = create<UserInfoStoreState>()(
                 }}));
             },
             updateUserInfo: async (props) => {
-                const res = await updateUserInfo(props);
+                await updateUserInfo(props);
                 const resUserInfo = await readUserInfo();
                 set((state) => ({ userInfo: { 
                     ...state.userInfo,

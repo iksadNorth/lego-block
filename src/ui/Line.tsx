@@ -6,7 +6,7 @@ interface LineProps {
 }
 const Line = styled.div<LineProps>`
     ${
-        ({ row }) => row ?
+        ({ row }) => ( row || false ) ?
         `
             border-top: solid 1px lightgray;
             height: fit-content; width: 100%;

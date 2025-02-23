@@ -1,9 +1,9 @@
-import React, { useState, useImperativeHandle, ReactNode } from "react";
+import React, { useState, useImperativeHandle, forwardRef, ReactNode } from "react";
 import styled from 'styled-components';
 
 
 // 모달 오버레이 스타일
-const ModalOverlay = styled.div<{open: boolean}>`
+const ModalOverlay = styled.div<{ open: boolean }>`
     position: fixed;
     top: 0; bottom: 0;
     left: 0; right: 0;
@@ -17,14 +17,19 @@ const ModalOverlay = styled.div<{open: boolean}>`
     z-index: 1000;
 `;
 
+export interface ModalHandle {
+    open: () => void;
+    close: () => void;
+}
+
 interface ModalProps {
     children: ReactNode;
-    ref: React.RefObject<null>;
 }
-export const Modal: React.FC<ModalProps> = ({ children, ref }) => {
+
+export const Modal = forwardRef<ModalHandle, ModalProps>(({ children }, ref) => {
     const [open, isOpen] = useState(false);
 
-    useImperativeHandle<void, void>(ref, () => ({
+    useImperativeHandle(ref, () => ({
         open: () => isOpen(true),
         close: () => isOpen(false),
     }));
@@ -38,4 +43,4 @@ export const Modal: React.FC<ModalProps> = ({ children, ref }) => {
             { children }
         </ModalOverlay>
     );
-};
+});
