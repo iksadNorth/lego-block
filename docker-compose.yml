@@ -7,7 +7,12 @@ services:
       - ./verdaccio:/verdaccio
   
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        # - linux/amd64
+        - linux/arm64
     container_name: mytube
     # ports:
     #   - 80:80
